@@ -1,0 +1,39 @@
+/* /* 
+
+section {
+    max-width: 950px;
+    margin: auto;
+}
+
+/*  this is only for test  */
+/* form .form-left {
+  float: left;
+  width: 49%;
+}
+
+form .form-right {
+  float: left;
+  width: 48%;
+  margin-left: 2%;
+}
+
+form textarea {
+    width: 102%;
+    padding: 5px;
+    font-size: 14px;
+}
+form input[type=submit] {
+    font-size: 14px;
+    padding: 5px 10px;
+    width: 100%;
+    margin-top: 14px;
+    margin-left: 40px;
+    border-radius: 6px;
+    border: none;
+    background-color: lightgray;
+} 
+form select {
+  padding: 4px;
+  margin-left: 0;
+  width: 100%;
+}   */

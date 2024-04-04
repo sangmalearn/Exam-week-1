@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator System</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+<body>
+    <div class="container mt-5">
+        <div class="row min-vh-60 d-flex">
+            <div class="col-md-6 m-auto border rounded p-4">
+            <div class="section-header text-center mb-5">
+                <h1>Calculator System</h1>
+            </div>
+
+             <div action="#" method="post" enctype="multipart/form-data">
+
+             <div class="row">
+                  <div class="col">
+                      <div class="mb-2 border rounded" >
+                          <input type="text" name="first_number" id="first_number" placeholder="Input first number" class="form-control" >
+                      </div> 
+                  </div>
+                  <div class="col">
+                      <div class="mb-2 border rounded" >
+                        <select name="Operators" id="math_operators" class="p-2 w-100">
+                            <option value="">Select Operators</option>
+                            <option value="+">Addition (+)</option>
+                            <option value="-">Substraction (-)</option>
+                            <option value="*">Multiplication (*)</option>
+                            <option value="/">Division (&divide;)</option>
+                            
+                        </select>
+                      </div>
+                  </div>
+                  <div class="col">
+                      <div class="mb-2 border rounded" >
+                          <input type="text" name="last_number" id="last_number" placeholder="Input last number" class="form-control" >
+                      </div>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="md-3 mt-4">                    
+                    <input type="button" value="Calculate" onclick="calculateResult()" class="btn btn-primary">
+                  </div>
+              </div>
+             <div class="row">
+                   <div class="col-2 mt-3 p-2 offset-md-1 text-center">Result: </div>
+                   <div class="col-7 mt-3 p-2 px-3 rounded border bg-light fw-bold" id="result" >0</div>    
+              </div> 
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function calculateResult() {
+        var firstNumber = parseFloat(document.getElementById('first_number').value);
+        var operator = document.getElementById('math_operators').value;
+        var lastNumber = parseFloat(document.getElementById('last_number').value);
+        var result = 0;
+
+        switch (operator) {
+            case '+':
+                result = firstNumber + lastNumber;
+                break;
+            case '-':
+                result = firstNumber - lastNumber;
+                break;
+            case '*':
+                result = firstNumber * lastNumber;
+                break;
+            case '/':
+                if (lastNumber !== 0) {
+                    result = firstNumber / lastNumber;
+                } else {
+                    result = 'Undefined (Division by zero)';
+                }
+                break;
+            default:
+                result = 'Invalid Operator';
+        }
+
+        document.getElementById('result').innerHTML = " " + result;
+    }
+</script>
+ 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+</script>
+
+</body>
+</html>
