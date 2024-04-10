@@ -1,5 +1,5 @@
 class BankAccount {
-    static accountCounter = 1000;
+    static accountCounter = "";
     static accountNumbers = new Set();
     constructor(ownerName, initialBalance){
         let newAccountNumber;
@@ -10,30 +10,36 @@ class BankAccount {
         BankAccount.accountNumbers.add(this.accountNumber);
         this.ownerName = ownerName;
         this.balance = initialBalance;
+        this.transactions = [];
     }
     Deposit(amount){
         this.balance += amount;
+        this.transactions.push(`Deposited ${amount}`);
     }
     withDraw(amount){
-        if(amount>this.balance){
+        if(amount > this.balance){
             console.log("Insufficient funds");
         } else {
             this.balance -= amount;
-            //console.log(`Withdraw ${amount} from ${this.ownerName}. Remaining balance: ${this.balance}`);
+            this.transactions.push(`Withdrawn ${amount}`);
         }
     }
     getBalance(){
         return this.balance;
     }
     displayAccountInfo(){
-        return `Account Number: ${this.accountNumber}\nAccount Owner: ${this.ownerName}\nBalance: ${this.balance}`;
-
+        let transactionInfo = "";
+        for(const transaction of this.transactions){
+            transactionInfo += transaction + "\n";
+        }
+        return `Account Number: ${this.accountNumber}\nAccount Owner: ${this.ownerName}\nBalance: ${this.balance}\n\nTransaction Histry: \n${transactionInfo}`;
     }
 }
-const bankaccount1 = new BankAccount('Munir Hossain', 1200);
-const bankaccount2 = new BankAccount('Rumi Roy', 800);
 
-// Accoount 1 
+const bankaccount1 = new BankAccount('Munir Hossain', 1200);
+const bankaccount2 = new BankAccount('Rumi Roy', 1800);
+
+// Account 1 
 bankaccount1.Deposit(500);
 bankaccount1.withDraw(400);
 
@@ -41,10 +47,14 @@ bankaccount1.withDraw(400);
 bankaccount2.Deposit(200);
 bankaccount2.withDraw(1100);
 
-// Account 1 informaton 
-console.log("Account 1 Informaton")
-console.log(bankaccount1.displayAccountInfo());
+// Account 1 information 
+console.log("New Balance");
 
-// Account 2 informaton 
-console.log("\nAccount 2 Informaton")
-console.log(bankaccount2.displayAccountInfo());
+console.log("Account 1 Information");
+console.log(bankaccount1.displayAccountInfo(400));
+
+
+// Account 2 information 
+console.log("\nAccount 2 Information");
+console.log(bankaccount2.displayAccountInfo(1100));
+
